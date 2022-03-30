@@ -9,7 +9,9 @@ class Thermostat {
   }
 
   up() {
+    if(this.temperature < this.max_temperature) {
     this.temperature += 1;
+    }
   }
 
   down() {

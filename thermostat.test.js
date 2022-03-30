@@ -31,4 +31,30 @@ describe('Thermostat', () => {
     sut.setPowerSavingMode(false);
     expect(sut.max_temperature).toBe(32);
   });
+
+  it('does not increase temperature above max temp', () => {
+    const sut = new Thermostat();
+    for (let i = 0 ; i < 10 ; i++) {
+      sut.up();
+    }
+    expect(sut.getTemperature()).toBe(25);
+  });
+  it('does not increase temperature above max temp', () => {
+    const sut = new Thermostat();
+    for (let i = 0 ; i < 10 ; i++) {
+      sut.up();
+    }
+    sut.setPowerSavingMode(false);
+    sut.up();
+    expect(sut.getTemperature()).toBe(26);
+  });
+  it('does not increase temperature above max temp', () => {
+    const sut = new Thermostat();
+    sut.setPowerSavingMode(false);
+    for (let i = 0 ; i < 15 ; i++) {
+      sut.up();
+    }
+    expect(sut.getTemperature()).toBe(32);
+  });
+
 })
