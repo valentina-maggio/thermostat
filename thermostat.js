@@ -1,6 +1,7 @@
 class Thermostat {
   constructor() {
     this.temperature = 20;
+    this.max_temperature = 25;
   }
 
   getTemperature() {
@@ -11,6 +12,17 @@ class Thermostat {
     this.temperature += 1;
   }
 
+  down() {
+    this.temperature -= 1;
+  }
+
+  setPowerSavingMode(boolean) {
+    if (boolean === true) {
+    return this.max_temperature = 25;
+  } else {
+    return this.max_temperature = 32;
+  }
+}
 }
 
 module.exports = Thermostat;
