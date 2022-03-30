@@ -78,4 +78,23 @@ describe('Thermostat', () => {
     sut.setPowerSavingMode(true);
     expect(sut.getTemperature()).toBe(25);
   });
+  it('returns the current energy usage', () => {
+    const sut = new Thermostat();
+    expect(sut.energyUsage()).toBe('medium-usage');
+  });
+  it('returns the current energy usage', () => {
+    const sut = new Thermostat();
+    sut.down();
+    sut.down();
+    sut.down();
+    expect(sut.energyUsage()).toBe('low-usage');
+  });
+  it('returns the current energy usage', () => {
+    const sut = new Thermostat();
+    sut.setPowerSavingMode(false);
+    for (let i = 0 ; i < 15 ; i++) {
+      sut.up();
+    }
+    expect(sut.energyUsage()).toBe('high-usage');
+  });
 })
