@@ -23,11 +23,16 @@ class Thermostat {
 
   setPowerSavingMode(boolean) {
     if (boolean === true) {
-    return this.max_temperature = 25;
+    this.max_temperature = 25;
+    this.temperature = this.max_temperature;
   } else {
     return this.max_temperature = 32;
   }
 }
+
+  reset() {
+    this.temperature = 20;
+  }
 }
 
 module.exports = Thermostat;

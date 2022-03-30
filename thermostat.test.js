@@ -63,4 +63,19 @@ describe('Thermostat', () => {
     }
     expect(sut.getTemperature()).toBe(10);
   });
+  it('resets the temperature to 20', () => {
+    const sut = new Thermostat();
+    sut.up();
+    sut.reset();
+    expect(sut.getTemperature()).toBe(20);
+  });
+  it('changes the max temp when power saving mode activated', () => {
+    const sut = new Thermostat();
+    sut.setPowerSavingMode(false);
+    for (let i = 0 ; i < 15 ; i++) {
+      sut.up();
+    }
+    sut.setPowerSavingMode(true);
+    expect(sut.getTemperature()).toBe(25);
+  });
 })
