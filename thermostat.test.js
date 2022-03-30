@@ -56,5 +56,11 @@ describe('Thermostat', () => {
     }
     expect(sut.getTemperature()).toBe(32);
   });
-
+  it('does not decrease temperature below min temp', () => {
+    const sut = new Thermostat();
+    for (let i = 0 ; i < 22 ; i++) {
+      sut.down();
+    }
+    expect(sut.getTemperature()).toBe(10);
+  });
 })
