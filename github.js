@@ -1,9 +1,6 @@
 import got from 'got';
 
-// const response_value = JSON.parse(get)
-
-const handleReceivedResponse = (response) => {
-  console.log(JSON.parse(response.body));
-}
-
-got('https://api.github.com/repos/sinatra/sinatra').then(handleReceivedResponse);
+got('https://api.github.com/repos/sinatra/sinatra').then((response) => {
+  const responseObject = JSON.parse(response.body);
+  console.log(responseObject);
+});
