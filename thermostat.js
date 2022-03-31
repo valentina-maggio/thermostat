@@ -1,8 +1,18 @@
-class Thermostat {
-  constructor() {
+import Weather from './weather.js';
+
+export default class Thermostat {
+  constructor(weather = new Weather) {
     this.temperature = 20;
     this.max_temperature = 25;
     this.min_temperature = 10;
+    this.weather = weather;
+  }
+
+  setCity(city, callback) {
+    this.weather.fetchWeatherData(city, (weatherData) => { 
+      console.log(this.temperature = weatherData.main.temp);
+      callback();
+      });
   }
 
   getTemperature() {
@@ -46,4 +56,14 @@ class Thermostat {
   }
 }
 
-module.exports = Thermostat;
+
+
+// const thermostat = new Thermostat;
+// thermostat.setCity("London", () => { 
+//   console.log(thermostat.getTemperature());
+//   console.log(thermostat.temperature);
+//  });
+
+
+//   console.log(thermostat.getTemperature());
+// console.log(thermostat.temperature);

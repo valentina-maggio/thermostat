@@ -1,18 +1,17 @@
-const Thermostat = require('./thermostat.js');
+import Thermostat from './thermostat.js';
+import Weather from './weather.js';
 
 describe('Thermostat', () => {
   it('returns the initial temperature', () => {
     const sut = new Thermostat();
     expect(sut.getTemperature()).toBe(20);
   });
-
   it('returns an increased temperature', () => {
     const sut = new Thermostat();
     sut.up();
     sut.up();
     expect(sut.getTemperature()).toBe(22);
   });
-
   it('increases then decreases temperature', () => {
     const sut = new Thermostat();
     sut.up();
@@ -31,7 +30,6 @@ describe('Thermostat', () => {
     sut.setPowerSavingMode(false);
     expect(sut.max_temperature).toBe(32);
   });
-
   it('does not increase temperature above max temp', () => {
     const sut = new Thermostat();
     for (let i = 0 ; i < 10 ; i++) {
@@ -97,4 +95,11 @@ describe('Thermostat', () => {
     }
     expect(sut.energyUsage()).toBe('high-usage');
   });
+  // it('returns the weather for London', () => {
+  //  // const weather = { fetchWeatherData: () => (10) };
+  //   const weather = new Weather;
+  //   const sut = new Thermostat(weather);
+  //   sut.setCity('London', () => {} );
+  //   expect(sut.getTemperature).toBe(7.49)
+  // });
 })
